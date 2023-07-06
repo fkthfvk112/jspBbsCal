@@ -44,7 +44,6 @@
 	}//나머지가 있으면 페이지 1개 추가
 	
 %>
-<a href="./main.jsp?content=calendarList">일정관리</a>
 <div align="center" style="padding:30px;">
 	<h1 style="display: inline-block; border-bottom: solid 2px black; margin: 30px; padding-bottom:10px">자유게시판</h1>
 	<table border="1" class="table">

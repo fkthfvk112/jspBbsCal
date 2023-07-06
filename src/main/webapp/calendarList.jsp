@@ -12,11 +12,22 @@
 UserDto userDto = (UserDto)session.getAttribute("login");
 boolean isLogIn = UserUtil.isLogIn(request);
 String currentURL = request.getRequestURL().toString();
+StringBuffer requestURL = request.getRequestURL();
+String queryString = request.getQueryString();
 
+if (queryString != null) {
+    currentURL = requestURL.append('?').append(queryString).toString();
+} else {
+    currentURL = requestURL.toString();
+}
 if(!isLogIn || userDto == null){
-	System.out.println("not loginfs");
+	System.out.println("not loginfs " + currentURL);
 	UserUtil.setPreUrl(request, currentURL);
-	response.sendRedirect("./main.jsp?content=login");//not work
+	%>
+	<script>
+		location.href = "./main.jsp?content=login";	
+	</script>
+	<%
 }
 
 else {

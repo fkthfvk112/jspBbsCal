@@ -15,7 +15,19 @@
 	else{
 		System.out.println("login success");
 		session.setAttribute("login", dto);
-		response.sendRedirect("./main.jsp?bbslist");
+		String preUrl = (String)session.getAttribute("preUrl");
+		System.out.println(preUrl);
+		if(preUrl == null){
+			response.sendRedirect("./main.jsp?bbslist");
+		}
+		else{
+			System.out.println("previous url : " + preUrl);
+			%>
+			<script>
+			location.href = "<%=preUrl%>";
+			</script>
+			<%
+		}
 	}
 	
 %>

@@ -5,6 +5,6 @@
 HttpSession sess = request.getSession();
 sess.invalidate();
 
-response.sendRedirect("./main.jsp?content=bbslist");
+response.sendRedirect("./main.jsp?content=home");
 
 %>
