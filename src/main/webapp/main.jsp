@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+String content = request.getParameter("content");
+if(content == null){
+	content = "home";
+}
+
+%>
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+<jsp:include page="header.jsp" flush="false"/> <!-- header -->
+<jsp:include page='<%=content + ".jsp" %>' flush="false"/> <!-- content -->
+<jsp:include page="footer.jsp" flush="false"/> <!-- footer -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
