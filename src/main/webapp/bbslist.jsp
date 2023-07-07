@@ -45,7 +45,7 @@
 	
 %>
 <div align="center" style="padding:30px;">
-	<h1 style="display: inline-block; border-bottom: solid 2px black; margin: 30px; padding-bottom:10px">자유게시판</h1>
+	<h1 style="display: inline-block; border-bottom: solid 2px black; margin: 30px; padding-bottom:10px">정보게시판</h1>
 	<table border="1" class="table">
 	<col width="70"/><col width="600"/><col width="100"/><col width="150"/>
 	<thead class="table-info">
@@ -122,15 +122,15 @@
 		}
 	%>
 
-	<form style="background-color: #e1e1e1; padding:10px; margin-top:20px">
+	<div style="background-color: #e1e1e1; padding:10px; margin-top:20px">
 		<select style="display: inline-block; width: auto;" class="form-select" id="choice" name="choice" value="<%=choice %>">
 			<option value="title">제목</option>
 			<option value="content">내용</option>
 			<option value="writer">작성자</option>
 		</select>
 		<input class="form-control mt-3" style="display: inline-block; width: auto;" type="text" id="search" name="search" value="<%=search%>"/>
-		<button class="btn btn-dark mb-1" onclick="searchBtn()">검색</button>
-	</form>
+		<button class="btn btn-dark mb-1" type="button" onclick="searchBtn()">검색</button>
+	</div>
 
 
 </div>

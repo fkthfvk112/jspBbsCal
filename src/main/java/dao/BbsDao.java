@@ -378,6 +378,30 @@ public class BbsDao {
 	    return count;
 	}
 	
+	public boolean increaseViews(BbsDto dto) {
+		String sql = " update bbs "
+				+ " set readcount = readcount + 1"
+				+ " where seq = ?";
+		int result = 0;
+
+	    Connection conn = null;
+	    PreparedStatement psmt = null;
+	    conn = DatabaseConnection.getInstance();
+
+	    try {
+	        psmt = conn.prepareStatement(sql);
+	        System.out.println("increaseViews 1/2 ... success");
+	        psmt.setInt(1, dto.getSeq());
+	        result = psmt.executeUpdate();
+	        System.out.println("increaseViews 2/2 ... success");
+	    } catch (Exception e) {
+	        System.out.println(e);
+	    } finally {
+	        DbClose.close(psmt, conn, null);
+	    }
+	    return result>=1?true:false;
+	}
+	
 	public int updateBbs(BbsDto dto, int seq) {
 		
 	    String sql = "UPDATE bbs "

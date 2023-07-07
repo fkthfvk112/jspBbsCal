@@ -14,10 +14,10 @@
 UserDto mem = (UserDto)session.getAttribute("login");
 if(mem == null || mem.getId().equals("")){
 	%>
-	<scrpit>
+	<script>
 	alert("로그인 해주세요.");
 	location.href="./main.jsp?content=login";
-	</scrpit>
+	</script>
 	<%
 	
 }
@@ -25,22 +25,22 @@ if(mem == null || mem.getId().equals("")){
 	<div align="center">
 	<form id="frm" method="post">
 		<table border="1">
-		<col width="200"><col width="500">
+		<col width="80"><col width="500">
 		
-		<tr>
+		<tr align="center">
 			<th>아이디</th>
 			<td>
 				<input type="text" name="id" size="50" value="<%=mem.getId() %>" readonly="readonly">
 			</td>
 		</tr>
-		<tr>
+		<tr align="center">
 			<th>제목</th>
 			<td>
 				<input type="text" id="title" name="title" size="50" placeholder="제목을 기입">
 			</td>
 		</tr>
 		
-		<tr>
+		<tr align="center">
 			<th>내용</th>
 			<td>
 				<textarea rows="20" cols="50" id="content" name="content" placeholder="내용을 기입"></textarea>

@@ -23,22 +23,49 @@
 </script>
 <%
 	}
+	dao.increaseViews(dto);
 %>
-<div align="center">
-	제목: <div><%=dto.getTitle() %></div>
-	아이디: <div><%=dto.getId() %></div>
-	내용: <div><%=dto.getContent() %></div>
-	
+<div align="center" class="p-3">
+	<table border="1" class="table">
+		<col width="80"><col width="500">
+		
+		<tr align="center">
+			<th class="table-secondary">아이디</th>
+			<td>
+				<div style="text-align:left;"><%=dto.getId() %></div>
+			</td>
+		</tr>
+		<tr align="center">
+			<th class="table-secondary">제목</th>
+			<td>
+				<div><%=dto.getTitle() %></div>
+			</td>
+		</tr>
+		
+		<tr align="center">
+			<th class="table-secondary" >내용</th>
+			<td>
+				<div style="text-align:left;"><%=dto.getContent() %></div>
+			</td>
+		</tr>
+		
+		</table>
 	<br />
-	<button type="button" onclick="answerBbs(<%=dto.getSeq()%>)">답글</button>
 
 <%
 
 UserDto user = (UserDto)request.getSession().getAttribute("login");
+if(user!=null){%>
+	<div class="m-3">
+		<button class="btn btn-primary" type="button" onclick="answerBbs(<%=dto.getSeq()%>)">답글</button>
+		<button class="btn btn-primary" type="button" onclick="insertTocal()">내 일정에 추가</button>
+	</div>
+<%
+}
 if(user!=null&&user.getId().equals(dto.getId())){
 %>
-	<button type="button" onclick="updateBbs(<%=dto.getSeq()%>)">수정</button>
-	<button type="button" onclick="deleteBbs(<%=dto.getSeq()%>)">삭제</button>
+	<button class="btn btn-success" type="button" onclick="updateBbs(<%=dto.getSeq()%>)">수정</button>
+	<button class="btn btn-secondary" type="button" onclick="deleteBbs(<%=dto.getSeq()%>)">삭제</button>
 <%
 }
 
@@ -56,7 +83,10 @@ if(user!=null&&user.getId().equals(dto.getId())){
 	
 	function deleteBbs(seq){
 		location.href = "delete.jsp?seq=<%=seq%>";
-
+	}
+	
+	function insertTocal(){
+		location.href = "insertToCal.jsp?seq=<%=seq%>";
 	}
 
 </script>
